@@ -9,9 +9,11 @@ export default function HomePage() {
   const handleSubmit = async () => {
     try {
       // Use token to fetch profile and store it
-      const profileRes = await fetch('https://webcourses.ucf.edu/api/v1/users/self/profile', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const profileRes = await fetch('http://localhost:5000/api/fetch-profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ canvasToken: token })
+      })      
 
       const profileData = await profileRes.json()
       if (!profileData.primary_email) {

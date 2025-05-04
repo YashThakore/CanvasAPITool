@@ -13,6 +13,9 @@ app.use(express.json())
 const userRoutes = require('./routes/user')
 app.use('/api/user', userRoutes)
 
+const fetchProfile = require('./routes/fetchProfile')
+app.use('/api/fetch-profile', fetchProfile)
+
 // Connect to MongoDB and start server
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
